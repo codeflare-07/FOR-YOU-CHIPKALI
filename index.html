@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memory Book ❤️</title>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --paper-color: #fdfbf7;
+            --line-color: #e5e7eb;
+            --cover-color: #be185d;
+            --spine-color: #9d174d;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #fce7f3 0%, #fbcfe8 100%);
+            font-family: 'Kalam', cursive;
+            overflow: hidden;
+            margin: 0;
+            perspective: 1500px;
+        }
+
+        /* Background Decor - UPDATED WITH FLOWERS */
+        .bg-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /* New floral SVG pattern */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23db2777' fill-opacity='0.15'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm-14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm-14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm-14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm-14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm-14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm-14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm-14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zM6 5h4v1H6v4H5V6H1V5h4V1h1v4zm14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zm14 0h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4z'/%3E%3Cpath d='M31.5 63.5c0-3-1.3-4-4-4h-1v-1c0-2.7-1-4-4-4s-4 1.3-4 4v1h-1c-2.7 0-4 1-4 4s1.3 4 4 4h1v1c0 2.7 1 4 4 4s4-1.3 4-4v-1h1c2.7 0 4-1 4-4zM13.5 24.5c0-3-1.3-4-4-4h-1v-1c0-2.7-1-4-4-4s-4 1.3-4 4v1h-1c-2.7 0-4 1-4 4s1.3 4 4 4h1v1c0 2.7 1 4 4 4s4-1.3 4-4v-1h1c2.7 0 4-1 4-4zM85.5 41.5c0-3-1.3-4-4-4h-1v-1c0-2.7-1-4-4-4s-4 1.3-4 4v1h-1c-2.7 0-4 1-4 4s1.3 4 4 4h1v1c0 2.7 1 4 4 4s4-1.3 4-4v-1h1c2.7 0 4-1 4-4zM62.5 76.5c0-3-1.3-4-4-4h-1v-1c0-2.7-1-4-4-4s-4 1.3-4 4v1h-1c-2.7 0-4 1-4 4s1.3 4 4 4h1v1c0 2.7 1 4 4 4s4-1.3 4-4v-1h1c2.7 0 4-1 4-4zM52.5 12.5c0-3-1.3-4-4-4h-1v-1c0-2.7-1-4-4-4s-4 1.3-4 4v1h-1c-2.7 0-4 1-4 4s1.3 4 4 4h1v1c0 2.7 1 4 4 4s4-1.3 4-4v-1h1c2.7 0 4-1 4-4zM73.5 25.5c0-3-1.3-4-4-4h-1v-1c0-2.7-1-4-4-4s-4 1.3-4 4v1h-1c-2.7 0-4 1-4 4s1.3 4 4 4h1v1c0 2.7 1 4 4 4s4-1.3 4-4v-1h1c2.7 0 4-1 4-4zM91.5 87.5c0-3-1.3-4-4-4h-1v-1c0-2.7-1-4-4-4s-4 1.3-4 4v1h-1c-2.7 0-4 1-4 4s1.3 4 4 4h1v1c0 2.7 1 4 4 4s4-1.3 4-4v-1h1c2.7 0 4-1 4-4zM20.5 82.5c0-3-1.3-4-4-4h-1v-1c0-2.7-1-4-4-4s-4 1.3-4 4v1h-1c-2.7 0-4 1-4 4s1.3 4 4 4h1v1c0 2.7 1 4 4 4s4-1.3 4-4v-1h1c2.7 0 4-1 4-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 1;
+            z-index: -2;
+        }
+
+        /* Book Setup */
+        .book {
+            position: relative;
+            width: 400px;
+            height: 550px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .book {
+                width: 320px;
+                height: 480px;
+            }
+        }
+
+        /* Page Structure */
+        .paper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-origin: left center;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), z-index 0s 0.2s; /* Delay z-index swap */
+            transform-style: preserve-3d;
+            border-radius: 5px 15px 15px 5px;
+        }
+
+        /* Front & Back of Page */
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: var(--paper-color);
+            border-radius: 5px 15px 15px 5px;
+            box-shadow: inset 5px 0 10px rgba(0,0,0,0.05); /* Spine shadow */
+            overflow: hidden; /* Prevents overflow */
+        }
+
+        /* Lined Paper Effect */
+        .lined-paper {
+            background-image: linear-gradient(var(--line-color) 1px, transparent 1px);
+            background-size: 100% 30px;
+            line-height: 30px;
+        }
+
+        .front {
+            z-index: 2;
+        }
+
+        .back {
+            z-index: 1;
+            transform: rotateY(180deg);
+            border-left: 2px solid rgba(0,0,0,0.05);
+        }
+
+        /* Hardcover Design */
+        .hardcover-front {
+            background: var(--cover-color);
+            border: 4px solid var(--spine-color);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 10px 0 20px rgba(0,0,0,0.2);
+        }
+        
+        .hardcover-back {
+            background: var(--cover-color);
+            border: 4px solid var(--spine-color);
+            transform: rotateY(180deg);
+        }
+
+        /* Logic for flipping */
+        .paper.flipped {
+            transform: rotateY(-180deg);
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), z-index 0s 0.2s;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 2.2rem;
+            color: #be185d;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.25rem;
+            color: #374151;
+            line-height: 1.6;
+        }
+        
+        /* Elements */
+        .polaroid {
+            background: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: rotate(-3deg);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            width: 140px;
+            height: auto; /* Allow height to adjust */
+        }
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 10;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
+        .polaroid-img {
+            width: 100%;
+            height: 120px;
+            background: #ffe4e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #db2777;
+            font-size: 0.8rem;
+            border: 1px dashed #db2777;
+            text-align: center;
+            padding: 0; /* Remove padding to fit image better */
+            overflow: hidden;
+        }
+        
+        .polaroid-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sticker {
+            font-size: 3.5rem;
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        /* Buttons */
+        .btn {
+            background: #db2777;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #9d174d;
+            transition: all 0.1s;
+            margin-top: auto;
+            margin-bottom: 10px;
+        }
+        .btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+        .btn-prev {
+            background: #9ca3af;
+            box-shadow: 0 4px 0 #6b7280;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-pattern"></div>
+
+    <div class="book" id="book">
+        
+        <!-- PAGE 1: COVER -->
+        <div id="p1" class="paper">
+            <div class="front hardcover-front">
+                <div class="border-2 border-white/30 p-8 rounded-lg w-full h-full flex flex-col justify-center items-center">
+                    <span class="text-6xl mb-4 filter drop-shadow-md">📒</span>
+                    <h1 class="text-white drop-shadow-md">Bestie's<br>Diary</h1>
+                    <p class="text-white/80 mt-4 text-xl">Top Secret Stuff</p>
+                    <p class="text-white/60 text-sm mt-auto">Est. 2024</p>
+                    <button class="btn bg-white text-pink-700 shadow-none hover:bg-gray-100 mt-4" onclick="flipNext()">Open It ➡️</button>
+                </div>
+            </div>
+            <div class="back lined-paper">
+                <div class="polaroid" style="transform: rotate(3deg); margin-top: 10px;">
+                    <div class="polaroid-img">
+                       
+                    </div>
+                </div>
+                <h2>Oye Nautanki!</h2>
+                <p>
+                    Yeh book sirf tere liye hai. <br>
+                    Waise toh tu sar ka dard hai, par sach kahun toh meri favourite medicine bhi tu hi hai.
+                </p>
+                <div class="sticker" style="bottom: 20px; right: 20px;">✨</div>
+                <button class="btn" onclick="flipNext()">Next Page ➡️</button>
+                <button class="btn btn-prev" onclick="flipPrev()">⬅️ Close</button>
+            </div>
+        </div>
+
+        <!-- PAGE 2: THE ROAST & LOVE -->
+        <div id="p2" class="paper">
+            <div class="front lined-paper">
+                <div class="absolute top-4 right-4 text-4xl opacity-20">🤣</div>
+                <h2 class="text-4xl mt-4">Sach Sunn...</h2>
+                <p class="mt-4 text-lg">
+                    Log kehte hain dimaag use karna chahiye, par tu toh dil se sochti hai (kyunki dimaag hai hi nahi). <br><br>
+                    Tu shakal se puri **Bandriya** 🐒 lagti hai, par...
+                </p>
+                <div class="sticker" style="top: 50%; left: 10px; font-size: 3rem;">🤪</div>
+                <p class="mt-auto text-pink-600 font-bold text-sm">...Par meri Bandriya sabse cute hai.</p>
+                <button class="btn" onclick="flipNext()">Aage Padh ➡️</button>
+                <button class="btn btn-prev" onclick="flipPrev()">⬅️ Back</button>
+            </div>
+            <div class="back lined-paper">
+                <div class="polaroid" style="transform: rotate(-2deg); margin-top: 10px;">
+                    <div class="polaroid-img">
+                         
+                    </div>
+                </div>
+                <h2>Bas Tu Hi Hai</h2>
+                <p>
+                    Jab saari duniya mere khilaaf hoti hai, tab bas tu hi mere saath khadi hoti hai (mostly hasne ke liye, par still). <br>
+                    Tere bina ye life bilkul black & white hai yaar.
+                </p>
+                <div class="sticker" style="bottom: 80px; right: 10px;">🥰</div>
+                <button class="btn" onclick="flipNext()">Next Page ➡️</button>
+                <button class="btn btn-prev" onclick="flipPrev()">⬅️ Back</button>
+            </div>
+        </div>
+
+        <!-- PAGE 3: IMPORTANCE & SECRETS -->
+        <div id="p3" class="paper">
+            <div class="front lined-paper">
+                <h2>Mere Raazdaar</h2>
+                <p class="mt-4">
+                    Tu wo safe hai jahan mere saare raaz band hain. <br>
+                    Mere rone par mujhe chup karana aur mere gande jokes pe hasna... 
+                </p>
+                <div class="text-5xl my-4">🤐</div>
+                <p class="font-bold text-pink-600">Agar police pakdegi toh hum dono saath jayenge, ye pakka hai!</p>
+                <button class="btn" onclick="flipNext()">Next Page ➡️</button>
+                <button class="btn btn-prev" onclick="flipPrev()">⬅️ Back</button>
+            </div>
+            <div class="back lined-paper">
+                <h2>No Refund!</h2>
+                <p>
+                    Sunn, hum chahe kitna bhi ladein, tu mujhse peecha nahi chuda sakti.
+                </p>
+                <p class="mt-4">
+                    Dosti ka contract sign ho chuka hai. <br>
+                    <strong>Expiry Date: NEVER.</strong>
+                </p>
+                <div class="sticker" style="top: 20px; right: 20px;">⚠️</div>
+                <button class="btn" onclick="flipNext()">Next Page ➡️</button>
+                <button class="btn btn-prev" onclick="flipPrev()">⬅️ Back</button>
+            </div>
+        </div>
+
+        <!-- PAGE 4: EMOTIONAL & PROMISE -->
+        <div id="p4" class="paper">
+            <div class="front lined-paper">
+                <h2>Dil Ki Baat ❤️</h2>
+                <p class="mt-4">
+                    Kabhi kabhi sochta hu agar tu na hoti toh mera kya hota? Shayad main akalmand hota, par khush nahi hota. <br>
+                    Tu sirf dost nahi, meri family hai.
+                </p>
+                <div class="text-6xl my-4 text-pink-400">🫂</div>
+                <button class="btn" onclick="flipNext()">Next Page ➡️</button>
+                <button class="btn btn-prev" onclick="flipPrev()">⬅️ Back</button>
+            </div>
+            <div class="back lined-paper">
+                <h2>Promise 🤞</h2>
+                <p>
+                    Main hamesha tera saath dunga. Chahe boyfriend/girlfriend aaye ya jaaye, ye Dosti permanent hai.
+                </p>
+                <p class="mt-6 text-xl text-pink-600 font-bold">
+                    Tu meri priority number 1 thi, hai aur rahegi.
+                </p>
+                <button class="btn" onclick="flipNext()">The End ➡️</button>
+                <button class="btn btn-prev" onclick="flipPrev()">⬅️ Back</button>
+            </div>
+        </div>
+
+        <!-- PAGE 5: FINAL -->
+        <div id="p5" class="paper">
+            <div class="front lined-paper">
+                <h1 class="text-pink-600 mt-8">Love You! ❤️</h1>
+                <p class="mt-6 text-xl">
+                    Hamesha aise hi hasti rehna (daant dikha ke).
+                    You are the best gift life gave me.
+                </p>
+                <div class="mt-8 text-8xl animate-pulse">💖</div>
+                <button class="btn bg-gray-400 mt-auto" onclick="flipPrev()">⬅️ Wapis Padhna Hai?</button>
+            </div>
+            <div class="back hardcover-back">
+                <!-- FIXED: Removed 'transform rotate-180' so text is upright on closing -->
+                <div class="flex flex-col items-center justify-center h-full">
+                    <p class="text-white/60">Made with 💖</p>
+                    <p class="text-white font-bold mt-2">Best Friends Forever</p>
+                    <button class="btn bg-white text-pink-700 shadow-none hover:bg-gray-100 mt-6" onclick="closeBook()">Close Book</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- LOGIC FOR PAGES & Z-INDEX ---
+        let currentPage = 1;
+        const totalPages = 5; // Updated to 5 pages
+        
+        // Initial Z-Index Setup
+        // Stack order: P1(5), P2(4), P3(3), P4(2), P5(1)
+        function setZIndexes() {
+            for (let i = 1; i <= totalPages; i++) {
+                const page = document.querySelector(`#p${i}`);
+                if (i < currentPage) {
+                    // Page is on the LEFT side
+                    page.style.zIndex = i; 
+                } else {
+                    // Page is on the RIGHT side
+                    page.style.zIndex = totalPages - i + 1;
+                }
+            }
+        }
+        setZIndexes();
+
+        function flipNext() {
+            if (currentPage <= totalPages) {
+                const page = document.querySelector(`#p${currentPage}`);
+                page.classList.add("flipped");
+                
+                currentPage++;
+                setZIndexes();
+
+                // Trigger Confetti if it's the last content page (Page 5 Front)
+                if (currentPage === totalPages + 1) {
+                     fireConfetti();
+                }
+            }
+        }
+
+        function flipPrev() {
+            if (currentPage > 1) {
+                currentPage--;
+                const page = document.querySelector(`#p${currentPage}`);
+                page.classList.remove("flipped");
+                setZIndexes();
+            }
+        }
+
+        function closeBook() {
+            // Close all pages
+            for (let i = totalPages; i >= 1; i--) {
+                const page = document.querySelector(`#p${i}`);
+                page.classList.remove("flipped");
+            }
+            currentPage = 1;
+            setZIndexes();
+        }
+
+        function fireConfetti() {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: 0.2, y: 0.6 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: 0.8, y: 0.6 } }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
